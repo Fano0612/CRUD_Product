@@ -1,0 +1,35 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+.btn-number {
+    padding: 6px 12px;
+    height: 34px;
+    font-size: 12px;
+    line-height: 1.428571429;
+    text-align: center;
+    text-shadow: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.btn-number:focus,
+.input-number:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.input-group {
+    width: 150px;
+}
+
+.input-group .form-control {
+    text-align: center;
+}
+
+.input-group-btn:last-child>.btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.input-group-btn:first-child>.btn {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+} */
