@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product_Management;
+use App\Models\User;
 use App\Models\ProductClone;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,39 +12,35 @@ class ProductCloneController extends Controller
 {
     public function index()
     {
-        $clone = ProductClone::all();
+        $user_id = auth()->user() ? auth()->user()->user_id : 'Unknown';
+        $clone = ProductClone::where('user_id', $user_id)->get();
         return view('cart', compact('clone'));
     }
     
-
     public function clone(Request $request)
     {
         $product_id = $request->input('product_id');
         $product = Product_Management::find($product_id);
         
-        // Check if the product exists in ProductClone table
         $clone = ProductClone::where('product_id', $product_id)->first();
         
         if ($clone) {
-            // If the product already exists in ProductClone table, update its product stock
             $clone->product_stock += 1;
             $clone->save();
         } else {
-            // If the product doesn't exist in ProductClone table, create a new entry
             $clone = new ProductClone();
             $clone->fill($product->attributesToArray());
             $clone->product_stock = 1;
+            $clone->user_id = auth()->User() ? auth()->User()->user_id : 'Unknown'; 
             $clone->save();
         }
         
-        // Update the product stock in Product_Management table
         $product->product_stock -= 1;
         $product->save();
         
         return redirect()->back()->with('success', 'Product cloned successfully!');
     }
-    
-    
+ 
     
     
 

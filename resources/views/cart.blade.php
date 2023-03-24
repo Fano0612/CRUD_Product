@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="en">
 
@@ -128,7 +130,7 @@
     </button>
     <div class="dropdown-menu dropdown-menu-right position-relative" aria-labelledby="dropdownMenuButton" >
     @if (auth()->check())
-  <p>Hello <b>{{ auth()->user()->user_username }}</b></p>
+    <a class="dropdown-item" href="">Hello <b>{{ auth()->user()->user_username }}</a>
 @endif
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="{{route ('logout')}}">Logout</a>

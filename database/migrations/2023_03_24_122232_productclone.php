@@ -17,6 +17,7 @@ return new class extends Migration
         $table->BigInteger('product_price')->length(50);
         $table->BigInteger('product_stock')->length(50);
         $table->string('product_picture')->nullable();
+    
         $table->timestamps();
     });
     }
